@@ -5,12 +5,14 @@ module Prpr
         def call
           if count == 1
             add_label label(:one)
+            remove_label label(:in_review)
           elsif count >= 2
             unless already_labeled?(label(:over_2))
               remove_label label(:one)
               add_label label(:over_2)
               add_comment
             end
+            remove_label label(:in_review)
           end
         end
 
